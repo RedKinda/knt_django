@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
 
 # Create your models here.
 
@@ -32,14 +34,13 @@ class Product(models.Model):
 # visibility INTEGER "visibility" INTEGER NOT NULL DEFAULT 1
 
 
-class User(models.Model):
+class User(AbstractUser):
     id = models.IntegerField(primary_key=True, editable=False)
     first_name = models.CharField(max_length=120)
     last_name = models.CharField(max_length=120)
     vunetid = models.CharField(max_length=120, unique=True)
-    password = models.IntegerField()
+    knt_password = models.IntegerField()
     balance = models.IntegerField(default=0)
-    visibility = models.IntegerField(default=1)
 
     def __str__(self):
         return self.vunetid

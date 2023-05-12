@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "knt_backend.User"
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+
 
 # Application definition
 
