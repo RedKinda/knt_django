@@ -41,6 +41,7 @@ class User(AbstractUser):
     vunetid = models.CharField(max_length=120, unique=True)
     knt_password = models.IntegerField()
     balance = models.IntegerField(default=0)
+    visibility = models.BooleanField(default=True)
 
     def __str__(self):
         return self.vunetid
