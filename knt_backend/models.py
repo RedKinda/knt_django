@@ -69,6 +69,21 @@ class Transaction(models.Model):
         return self.ref
 
 
+class TransactionItem(models.Model):
+    transaction_id = models.ForeignKey("Transaction", on_delete=models.PROTECT)
+    product_id = models.ForeignKey("Product", on_delete=models.PROTECT)
+    quantity = models.IntegerField()
+    price = models.IntegerField()
+    tax = models.IntegerField()
+
+    # primary key is composite of transaction and product id
+    class Meta:
+        unique_together = (("transaction_id", "product_id"),)
+
+    def __str__(self):
+        return self.transaction_id
+
+
 # id INTEGER "id" INTEGER NOT NULL UNIQUE
 # data TEXT "data" TEXT NOT NULL
 # timestamp TEXT "timestamp" TEXT NOT NULL
